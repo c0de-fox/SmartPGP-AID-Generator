@@ -1,7 +1,7 @@
 # PGP AID Generator
 
 Script to generate a valid Application Identifier (AID) for an implementation
-of a PGP Smart Cart (such as SmartPGP)
+of a PGP Smart Card (such as SmartPGP)
 
 The AID is 16 bytes in length and must be unique (multiple cards should have different AIDs).
 The AID is written to the Smart Card during application install, and can not be changed without
@@ -25,8 +25,8 @@ There are 2 bytes after the serial number, that are static and always `0x00 0x00
 
 To generate the serial number, you must provide this script with the following information:
 
-    1. The `ICSerialNumber` value from `gp -i`
-    2. One or more domain names that you control
+1. The `ICSerialNumber` value from `gp -i`
+2. One or more domain names that you control
 
 The UUID of `ICSerialNumber` will be created using the namespace of the IC Manufacturer; In this
 case, we are using Infineon. You should define the namespace for your device if different.

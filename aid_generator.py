@@ -2,7 +2,7 @@
 
 """
 Script to generate a valid Application Identifier (AID) for an implementation
-of a PGP Smart Cart (such as SmartPGP)
+of a PGP Smart Card (such as SmartPGP)
 
 The AID is 16 bytes in length and must be unique (multiple cards should have different AIDs).
 The AID is written to the Smart Card during application install, and can not be changed without
