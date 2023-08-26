@@ -84,10 +84,9 @@ def main(options: dict[str, Any]) -> None:
         len(options.get("<ic_serial_number>", "")) > 0
         and len(options.get("<domain_name>", [])) > 0
     ):
-        ic_uuid: uuid.UUID = uuid.uuid5(
-            NAMESPACE_INFINEON, str(options["<ic_serial_number>"])
+        uuid_hash.update(
+            uuid.uuid5(NAMESPACE_INFINEON, str(options["<ic_serial_number>"])).bytes
         )
-        uuid_hash.update(ic_uuid.bytes)
 
         for domain in list(options["<domain_name>"]):
             uuid_hash.update(uuid.uuid5(uuid.NAMESPACE_DNS, str(domain)).bytes)
@@ -96,6 +95,6 @@ def main(options: dict[str, Any]) -> None:
         aid_result = f"{AID_PREFIX}{MANUFACTURER_ID}{uuid_result.hex[:8]}{AID_POSTFIX}"
         print(f"Your AID is: {aid_result}")
 
+
 if __name__ == "__main__":
-    arguments: dict[str, Any] = docopt(__doc__, version="2023.08.1")
-    main(arguments)
+    main(docopt(__doc__, version="2023.08.1"))
